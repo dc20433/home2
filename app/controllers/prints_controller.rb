@@ -1,6 +1,6 @@
 class PrintsController < ApplicationController
   def pregi
-    @p_regi = Regi.all
+    @p_regi = Regi.order("last_name, first_name, init").all
   end
 
   def pchart_date

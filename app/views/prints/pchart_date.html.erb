@@ -18,7 +18,7 @@
     </thead>
     </tbody>
         <% @date = 0 %>
-        <% Chart.joins(:regi).order("t_date DESC, last_name, first_name").each do |chart| %>
+        <% Chart.joins(:regi).order("t_date DESC, last_name, first_name, init").each do |chart| %>
             <tr style="height:15px">
             <% @date != chart.t_date ? show_date = chart.t_date : show_date = " " %>
             <td><%= show_date %></td>

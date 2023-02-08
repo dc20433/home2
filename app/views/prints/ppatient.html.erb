@@ -21,7 +21,7 @@
     </thead>
     </tbody>
       <% @n = 0 %>
-      <% Patient.joins(:regi).order("last_name, first_name, v_date DESC").each do |patient| %>
+      <% Patient.joins(:regi).each do |patient| %>
         <tr style="height:15px">
         <% @n != patient.regi_id ? show_name = Regi.where(id: patient.regi_id).pluck(:last_name).to_sentence + ", " + Regi.where(id: patient.regi_id).pluck(:first_name).to_sentence + " " + Regi.where(id: patient.regi_id).pluck(:init).to_sentence : show_name = " " %>
           <td><%= show_name %></td>

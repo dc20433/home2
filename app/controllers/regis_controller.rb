@@ -4,7 +4,7 @@ class RegisController < ApplicationController
 
   # GET /regis or /regis.json
   def index
-    @q = Regi.order("last_name, first_name").ransack(params[:q])
+    @q = Regi.order("last_name, first_name, init").ransack(params[:q])
     @regis = @q.result(distinct: true)
   end
 
