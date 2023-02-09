@@ -9,11 +9,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   
-  get 'prints/pregi'
-  get 'prints/pchart_patient'
-  get 'prints/pchart_date'
-  get 'prints/ppatient'
-  get 'print' => 'regis#print'
+  get 'overviews/patient_list'
+  get 'overviews/patient_info'
+  get 'overviews/chart_name'
+  get 'overviews/chart_date'
   get 'consent' => 'sites#consent'
   get 'insurance' => 'sites#insurance'
   

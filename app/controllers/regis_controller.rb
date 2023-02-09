@@ -12,10 +12,6 @@ class RegisController < ApplicationController
   def show
   end
 
-  def print
-    @p_regi = Regi.all
-  end
-
   # GET /regis/new
   def new
     @regi = Regi.new
