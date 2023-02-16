@@ -22,7 +22,7 @@ default: &default
   
 development:
   <<: *default
-  database: aq1_development
+  database: new
   host: localhost
   username: <%= ENV["PG_UN"] %>
   password: <%= ENV["PG_PW"] %>

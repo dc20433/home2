@@ -22,7 +22,8 @@
         <tr style="height:15px">
         <% @name != chart.regi_id ? show_name = Regi.where(id: chart.regi_id).pluck(:last_name).to_sentence + ", " + Regi.where(id: chart.regi_id).pluck(:first_name).to_sentence + " " + Regi.where(id: chart.regi_id).pluck(:init).to_sentence : show_name = " " %>
         <%# @n != chart.regi_id ? show_name = chart.last_name : show_name = " " %>
-        <td><%= show_name %></td>
+        <% regi_id = Regi.where(id: chart.regi_id).pluck(:id).to_sentence %>
+        <td><%= link_to show_name, regi_charts_path(regi_id) %></td>
         <% @name = chart.regi_id %>
         <td><%= chart.t_date %></td>
         <td><%= chart.subj %></td>

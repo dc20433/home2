@@ -7,6 +7,7 @@
   <%= link_to "Back to Patients", regis_path, class: "btn btn-sm btn-outline-success mb-3 ms-2 ps-3 pe-3 rounded-pill" %>
     <thead class="table-primary">
       <tr style="height:15px">
+        <th>Created at</th>
         <th>Last Name</th>
         <th>First Name</th>
         <th>M. Init</th>
@@ -18,11 +19,12 @@
   <% @patient_list.each do |regi| %>
 
     <tr>
+      <td><%= (regi.created_at - 5*3600).strftime("%y-%m-%d %H:%M") %></td>
       <td><%= regi.last_name %></td>
       <td><%= regi.first_name %></td>
       <td><%= regi.init %></td>
       <td><%= regi.gender %></td>
-      <td><% regi.dob? ? ((Time.zone.now - regi.dob.to_time) / 1.year.seconds).floor : " " %></td>
+      <td><%= regi.dob? ? ((Time.zone.now - regi.dob.to_time) / 1.year.seconds).floor : " " %></td>
       <td><%= regi.dob %></td>                
     </tr>
     <% end %>
