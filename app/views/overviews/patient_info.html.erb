@@ -9,7 +9,7 @@
     <thead class="table-success">
     <tr style="height:13px">
         <th>Name</th>
-        <th style="width:115px">Date</th>
+        <th style="width:115px">Date Entered</th>
         <th>Contact Info</th>
         <th>Weight</th>
         <th>Complaints</th>
@@ -20,28 +20,29 @@
       </tr>
     </thead>
     </tbody>
-      <% @n = 0 %>
-      <% Patient.joins(:regi).each do |patient| %>
+      <% @name = 0 %>
+      <% Patient.joins(:regi).order("last_name, first_name, init, dob, v_date DESC").each do |patient| %>
         <tr style="height:15px">
-        <% @n != patient.regi_id ? show_name = Regi.where(id: patient.regi_id).pluck(:last_name).to_sentence + ", " + Regi.where(id: patient.regi_id).pluck(:first_name).to_sentence + " " + Regi.where(id: patient.regi_id).pluck(:init).to_sentence : show_name = " " %>
-          <td><%= show_name %></td>
-            <% @n=patient.regi_id %>
+        <td>
+        <%= @name != patient.regi_id ? Regi.where(id: patient.regi_id).pluck(:last_name).to_sentence + ", " + Regi.where(id: patient.regi_id).pluck(:first_name).to_sentence + " " + Regi.where(id: patient.regi_id).pluck(:init).to_sentence : " " %>
+        </td>
+            <% @name=patient.regi_id %>
           <td><%= patient.v_date %></td>
           <td>
             <%= patient.street %><%= ', ' if patient.street? %>
             <%= patient.city %>
             <%= patient.state %>
             <%= patient.zip %>
-            <%= 'C:' if patient.cell? %><%= patient.cell %>
-            <%= 'H:' if patient.home? %><%= patient.home %>
-            <%= 'W:' if patient.work? %><%= patient.work %>
-            <%= 'E:' if patient.email? %><%= patient.email %>
+            <%= 'Cell:' if patient.cell? %><%= patient.cell %>
+            <%= 'Home:' if patient.home? %><%= patient.home %>
+            <%= 'Work:' if patient.work? %><%= patient.work %>
+            <%= 'Email:' if patient.email? %><%= patient.email %>
           </td>
           <td><%= patient.weight %></td>
           <td>
             <%= '1.' if patient.com1? %>
-            <%= patient.com1 %><%= ', 2.' if patient.com2? %>
-            <%= patient.com2 %><%= ', 3.' if patient.com3? %>
+            <%= patient.com1 %><%= ' 2.' if patient.com2? %>
+            <%= patient.com2 %><%= ' 3.' if patient.com3? %>
             <%= patient.com3 %>
           </td>
           <td>

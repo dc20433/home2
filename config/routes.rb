@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'restore_points/patient_list_update'
+  get 'restore_points/patient_chart_update'
+  get 'restore_points/patient_info_update'
   
   resources :regis do
     resources :charts

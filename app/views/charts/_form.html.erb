@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
+  <%= f.text_field :name, value: (@regi.last_name + ", " + @regi.first_name + " " + (@regi.init? ? (@regi.init + ".") : '' )), hidden: true %>
+
   <div class="row">
     <div class="col col-md-2">
       <b>Updated on</b>
-      <%= f.date_field :t_date, class:"form-control form-control-sm border-primary" %>
+      <%= f.date_field :t_date, placeholder: "MM/DD/YYYY", class:"form-control form-control-sm border-primary" %>
     </div>
   </div>
   <br>

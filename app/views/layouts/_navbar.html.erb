@@ -47,21 +47,22 @@
         <% end %>
 
         <% if current_user && current_user.Admin? %>
-          <li class="nav-item">
-            <%= link_to "Users", users_path, class:"nav-link text-dark ms-1 fw-bold bg-info rounded-pill border border-dark border-2" %>
-          </li>
+
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split nav-link text-dark ms-1 fw-bold bg-info rounded-pill border border-dark border-2" id="navbarDropdownMenuLink" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Portal
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" id="navbarDropdownMenuLink">
+            <li><%= link_to "Users and Usages", users_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Patient List Update", restore_points_patient_list_update_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Patient Charts Update", restore_points_patient_chart_update_path, class: "dropdown-item" %></li>
+            <li><%= link_to "Patient Info Update", restore_points_patient_info_update_path, class: "dropdown-item" %></li>
+          </ul>
+        </div>
           <li class="nav-item">
             <%# link_to "Sign up", new_user_registration_path, class:"nav-link text-dark fw-bold bg-info rounded-pill" %>
           </li>
         <% end %>
-
       </ul>
-
-      <li class="d-flex">
-        <% if current_user %>
-          <p class="text-dark fw-bold bg-info mt-1 mb-1 p-3 pt-1 pb-1 rounded-pill border border-dark border-2"><%= current_user.email %> : <%= current_user.role %></p>
-        <% end %>
-      </li>
     </div>
   </div>
 

@@ -1,6 +1,6 @@
 class OverviewsController < ApplicationController
   def patient_list
-    @patient_list = Regi.order("created_at, last_name, first_name, init").all
+    @patient_list = Regi.order("last_name, first_name, init, dob").all
   end
 
   def patient_info

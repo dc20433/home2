@@ -11,6 +11,8 @@
         </ul>
       </div>
     <% end %>
+
+    <%= f.text_field :name, value: (@regi.last_name + ", " + @regi.first_name + " " + (@regi.init? ? (@regi.init + ".") : '' )), hidden: true %>
   
     <div class="row">
       <div class="col-md-2">
@@ -38,11 +40,11 @@
     <div class="row">
       <div class="col-md-3">
         <b><%= f.label :height, "Height", class:"form-label" %></b>
-        <%= f.text_field :height, class: "form-control form-control-sm border-primary" %>
+        <%= f.number_field :height, step: 0.1, class: "form-control form-control-sm border-primary" %>
       </div>
       <div class="col-md-3">
         <b><%= f.label :weight, "Weight", class:"form-label" %></b>
-        <%= f.text_field :weight, class: "form-control form-control-sm border-primary" %>
+        <%= f.number_field :weight, step: 0.1, class: "form-control form-control-sm border-primary" %>
       </div>
       <div class="col-md-2">
         <b><%= f.label :m_stat, "Marital Status", class:"form-label" %></b><br>
