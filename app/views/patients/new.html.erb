@@ -1,5 +1,6 @@
-<% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
-  <h1 class="text-center">New Record</h1>
+<% if (current_user && current_user.Patient?) || (current_user && current_user.Admin?) %>
+  <h1 class="text-center">Patient Information</h1>
   <%= render 'layouts/identifier' %>
+<br>
     <%= render 'form' %>
 <% end %>

@@ -1,12 +1,17 @@
-<% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
-  <h1 class="text-center">Patient Records</h1>
-  <%= render 'layouts/identifier' %>
-  <%= link_to 'New Record', new_regi_patient_path, class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
-  <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-primary m-1 rounded-pill" %>
-  <%= link_to 'Patient Files', regi_filings_path, class:"btn btn-sm btn-outline-info m-1 rounded-pill" %>
-  <%= link_to 'Back to Patients', regis_path, class:"btn btn-sm btn-outline-secondary m-1 rounded-pill" %>
-  <button onclick="window.print()", class="btn btn-sm btn-outline-success ps-3 pe-3 rounded-pill" >Print This Page</button>
+<% if (current_user && current_user.Patient?) || (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+<%= render "layouts/navbar" %>
 
+  <h1 class="text-center">Patient Information</h1>
+  <%= render 'layouts/identifier' %>
+  <% if (current_user && current_user.Patient?) || (current_user && current_user.Admin?) %>
+    <%= link_to 'New Record', new_regi_patient_path, class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
+  <% end %>
+  <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+    <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-primary m-1 rounded-pill" %>
+    <%= link_to 'Patient Files', regi_filings_path, class:"btn btn-sm btn-outline-info m-1 rounded-pill" %>
+    <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary m-1 rounded-pill" %>
+    <button onclick="window.print()", class="btn btn-sm btn-outline-success ps-3 pe-3 rounded-pill" >Print This Page</button>
+  <% end %>
   <table class="table table-sm table-striped table-hover mt-1">
     <thead class="table-success">
     <tr>
@@ -17,7 +22,7 @@
         <th>Onset/Pain</th>
         <th>PCP</th>
         <th>Health History</th>
-        <th style="width:115px">Meds Taken</th>
+        <th></th>
       </tr>
     </thead>
     </tbody>
@@ -42,9 +47,9 @@
           </td>
           <td>
             <%= '1.' if patient.com1? %>
-            <%= patient.com1 %><%= ', 2.' if patient.com2? %>
-            <%= patient.com2 %><%= ', 3.' if patient.com3? %>
-            <%= patient.com3 %>
+            <%= patient.com1.strip %><%= '; 2.' if patient.com2? %>
+            <%= patient.com2.strip %><%= '; 3.' if patient.com3? %>
+            <%= patient.com3.strip %>
           </td>
           <td>
             <%= patient.d_onset %><%= '/Pain: ' if patient.pain_scale? %>
@@ -52,11 +57,15 @@
           </td>
           <td><%= patient.pcp_name %></td>
           <td>
-            <%= patient.di_list.to_sentence %><%= ', ' if patient.o_dis? %>
+            <%= (patient.di_list.to_sentence).gsub(/_/, ' ').gsub(/;/, '') %><%= ', ' if patient.o_dis? %>
             <%= patient.o_dis %><%= ', ' if patient.inj_surg? %>
             <%= patient.inj_surg %><%= ', Preg' if patient.preg == 'Yes' %>
           </td>
-          <td><%= patient.med_taken %></td>
+          <td>
+            <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+              <%= button_to "Delete", [@regi,patient], method: :delete, class:"btn btn-sm btn-danger ms-2 me-2 rounded-pill", form: { data: { turbo_confirm: "Are you sure?" } } %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

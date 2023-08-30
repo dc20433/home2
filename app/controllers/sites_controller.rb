@@ -5,6 +5,6 @@ class SitesController < ApplicationController
   def consent
   end
 
-  def insurance
+  def info_edit
   end
 end

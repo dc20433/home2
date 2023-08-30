@@ -1,10 +1,18 @@
-<div 
+<%= render "layouts/navbar" %>
+<% if (current_user && current_user.Patient?) %>
+    <div class="text-center">
+    <%= link_to "Patient List", regis_path, class:"nav-link text-dark ms-1 mt-1 pt-1 pb-1 fw-bold bg-info rounded-pill border border-dark border-2" %>
+    </div>
+  <% end %>
+  <div 
   class="screen"
   style="background-image: url(<%= asset_path 'pine_trees.jpg' %> );">
   <div class="color-overlay d-flex justify-content-center mt-5">
     <b><b><h6 class="mt-5 pt-3" style="font-size: 3.3rem">Welcome to Zhang's Acupuncture<h6></b></b>
   </div>
   <br><br><br><br><br><div class="color-overlay d-flex justify-content-center mt-5">
-    <b><b><h6 class="mt-5 pt-3" style="font-size: 2rem">Traditional Chinese Medical Treatment<h6></b></b>
+    <b><b><h6 class="mt-5 mb-5 pt-3" style="font-size: 2rem">Traditional Chinese Medical Treatment<h6></b></b>
   </div>
+  
+
 </div>

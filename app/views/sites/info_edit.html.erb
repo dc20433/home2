@@ -1,0 +1,7 @@
+<br><br><br><br>
+<div class="text-center">
+<h2>Patient Information has been modified</h2>
+<br><br>
+<h3>Plese press the Finish button to sign out and re-login</h3>
+<%= button_to("Finish", destroy_user_session_path, class:"btn btn-lg btn-success mt-5 ps-4 pe-4 rounded-pill border border-dark border-2", method: :delete, data: { turbo_method: :delete }) %>
+</div>
