@@ -40,8 +40,7 @@ class PatientsController < ApplicationController
   # PUT regis/1/patients/1
   def update
     if @patient.update(patient_params)
-      # redirect_to regi_patients_path(@regi), notice:'Patient Record Updated...'
-      redirect_to info_edit_path, notice: "Patient Record Updated"
+      redirect_to regi_patients_path(@regi), notice:'Patient Record Updated...'
     else
       render action: 'edit'
     end
@@ -50,8 +49,7 @@ class PatientsController < ApplicationController
   # DELETE regis/1/patients/1
   def destroy
     @patient.destroy
-    # redirect_to regi_patients_path(@regi), notice: "Patient Record Deleted..."
-    redirect_to info_edit_path, notice: "Patient Record Deleted..."
+    redirect_to regi_patients_path(@regi), notice: "Patient Record Deleted..."
   end
 
   private

@@ -1,3 +1,16 @@
+<%= render "layouts/navbar" %>
+
+<% if (current_user && current_user.Patient?) %>
+  <head>
+    <script type="text/javascript">
+    window.history.forward();
+    function noback() { window.history.forward(); }
+    </script>
+  </head>
+  <body onload="noback();"
+  onpageshow="if (event.persisted) noback();" onunload="">
+<% end %>
+
 <% if (current_user && current_user.Patient?) || (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
   <%= form_with(model: [@regi, @patient]) do |f| %>
     <% if @patient.errors.any? %>
@@ -153,9 +166,17 @@
   <br><br>
 
     <div class="btn-group" role="group">
-      <%= f.submit "Agree", data: { burbo: false}, class:'btn btn-success btn-sm m-2 ps-4 pe-4 rounded-pill' %>
-  <% end %>    
-    <%= button_to 'Disagree/Delete', [@regi,@patient], method: :delete, class:"btn btn-danger btn-sm m-2 mt-2 rounded-pill", form: { data: { turbo_confirm: 'Are you sure?' }  } %>
-
+      <% if (current_user && current_user.Patient?) %>
+        <%= f.submit "Agree", data: { burbo: false}, :disable_with => "processing", class:'btn btn-success btn-sm m-2 ps-4 pe-4 rounded-pill' %>
+      <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+        <%= f.submit "Submit", data: { burbo: false}, class:'btn btn-success btn-sm m-2 ps-4 pe-4 rounded-pill' %>
+      <% end %>
+  <% end %>
+      <% if (current_user && current_user.Patient?) %>
+        <%= link_to 'Disagree', info_edit_path, class:"btn btn-danger btn-sm m-2 mt-2 rounded-pill", form: { data: { turbo_confirm: 'Are you sure?' }  } %>
+      <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+        <%= button_to 'Delete', [@regi,@patient], method: :delete, class:"btn btn-danger btn-sm m-2 mt-2 ps-4 pe-4 rounded-pill", form: { data: { turbo_confirm: 'Are you sure?' }  } %>
+        <%= link_to "Previous Page", :back, class:'btn btn-success btn-sm m-2 rounded-pill' %>
+      <% end %>
     </div>
 <% end %>

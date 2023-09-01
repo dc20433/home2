@@ -1,12 +1,24 @@
 <% if (current_user && current_user.Patient?) || (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
 <%= render "layouts/navbar" %>
 
+<% if (current_user && current_user.Patient?) %>
+  <head>
+    <script type="text/javascript">
+    window.history.forward();
+    function noback() { window.history.forward(); }
+    </script>
+  </head>
+  <body onload="noback();"
+  onpageshow="if (event.persisted) noback();" onunload="">
+<% end %>
+
   <h1 class="text-center">Patient Information</h1>
   <%= render 'layouts/identifier' %>
   <% if (current_user && current_user.Patient?) || (current_user && current_user.Admin?) %>
-    <%= link_to 'New Record', new_regi_patient_path, class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
+    <%= link_to 'New Record', new_regi_patient_path, :disable_with => "processing", class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
   <% end %>
   <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+    <%= link_to 'New Record', new_regi_patient_path, class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
     <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-primary m-1 rounded-pill" %>
     <%= link_to 'Patient Files', regi_filings_path, class:"btn btn-sm btn-outline-info m-1 rounded-pill" %>
     <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary m-1 rounded-pill" %>
@@ -22,7 +34,6 @@
         <th>Onset/Pain</th>
         <th>PCP</th>
         <th>Health History</th>
-        <th></th>
       </tr>
     </thead>
     </tbody>
@@ -30,7 +41,11 @@
       <% @regi.patients.order('v_date DESC').each do |patient| %>
         <tr>
           <td>
-            <%= link_to patient.v_date, regi_patient_path(@regi,patient) %>
+            <% if (current_user && current_user.Patient?)%>
+              <%= patient.v_date %> 
+            <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+              <%= link_to patient.v_date, regi_patient_path(@regi,patient) %>
+            <% end %>
           </td>  
           <td>
             <%= patient.street %><%= ', ' if patient.street? %>
@@ -60,11 +75,6 @@
             <%= (patient.di_list.to_sentence).gsub(/_/, ' ').gsub(/;/, '') %><%= ', ' if patient.o_dis? %>
             <%= patient.o_dis %><%= ', ' if patient.inj_surg? %>
             <%= patient.inj_surg %><%= ', Preg' if patient.preg == 'Yes' %>
-          </td>
-          <td>
-            <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
-              <%= button_to "Delete", [@regi,patient], method: :delete, class:"btn btn-sm btn-danger ms-2 me-2 rounded-pill", form: { data: { turbo_confirm: "Are you sure?" } } %>
-            <% end %>
           </td>
         </tr>
       <% end %>

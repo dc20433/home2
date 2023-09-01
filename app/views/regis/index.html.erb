@@ -1,5 +1,17 @@
 <% if (current_user && current_user.Manager?) || (current_user && current_user.Patient?) || (current_user && current_user.Admin?) %>
 <%= render "layouts/navbar" %>
+
+  <% if (current_user && current_user.Patient?) %>
+    <head>
+      <script type="text/javascript">
+      window.history.forward();
+      function noback() { window.history.forward(); }
+      </script>
+    </head>
+    <body onload="noback();"
+    onpageshow="if (event.persisted) noback();" onunload="">
+  <% end %>
+
 <div 
   class="screen"
   style="background-image: url(<%= asset_path 'pine_trees.jpg' %> );">
@@ -17,6 +29,12 @@
             <table class="table table-sm table-striped table-hover mx-auto mt-1">
               <thead class="table-primary">
                 <tr>
+                <% if (current_user && current_user.Patient?) %>
+                  <th>Last Name</th>
+                  <th>First Name</th>
+                  <th>M. Init</th>
+                  <th></th>
+                <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
                   <th>Last Name</th>
                   <th>First Name</th>
                   <th>M. Init</th>
@@ -24,24 +42,32 @@
                   <th>Age</th>
                   <th>Date of Birth</th>
                   <th style="width:220px"></th>
+                <% end %>
                 </tr>
               </thead>
             <% @regis.each do |regi| %>
 
               <tr>
+              <% if (current_user && current_user.Patient?) %>
+                <td><%= regi.last_name %></td>
+                <td><%= regi.first_name %></td>
+                <td><%= regi.init? ? regi.init + "." : "" %></td>
+                <td>
+                <%= link_to 'Info', regi_patients_path(regi.id), :disable_with => "processing", class: "btn btn-outline-primary btn-sm ps-3 pe-3 rounded-pill" %>
+                </td>
+              <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
                 <td><%= link_to regi.last_name, regi_path(regi.id) %></td>
                 <td><%= regi.first_name %></td>
                 <td><%= regi.init? ? regi.init + "." : "" %></td>
                 <td><%= regi.gender %></td>
                 <td><%= regi.dob? ? ((Time.now.in_time_zone("America/New_York") - regi.dob.to_time) / 1.year.seconds).floor : " " %></td>
                 <td><%= regi.dob %></td>                
-                <td>
-                <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm ps-3 pe-3 rounded-pill" %>
-                <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
+                <td>                
+                  <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm ps-3 pe-3 rounded-pill" %>
                   <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm rounded-pill" %>
                   <%= link_to 'Files', regi_filings_path(regi.id), class: "btn btn-outline-success btn-sm ps-3 pe-3 rounded-pill" %>
-                <% end %>
                 </td>
+              <% end %>
               </tr>
               <% end %>
             </table>
