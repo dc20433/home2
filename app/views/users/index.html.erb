@@ -1,4 +1,6 @@
 <% if current_user && current_user.Admin? %>
+<%= render "layouts/navbar" %>
+
   <div 
     class="screen"
     style="background-image: url(<%= asset_path 'pine_trees.jpg' %> );">

@@ -32,7 +32,7 @@
         <th>Weight</th>
         <th>Complaints</th>
         <th>Onset/Pain</th>
-        <th>PCP</th>
+        <th>Referred</th>
         <th>Health History</th>
       </tr>
     </thead>
@@ -52,10 +52,10 @@
             <%= patient.city %>
             <%= patient.state %>
             <%= patient.zip %>
-            <%= 'Cell:' if patient.cell? %><%= patient.cell %>
-            <%= 'Home:' if patient.home? %><%= patient.home %>
-            <%= 'Work:' if patient.work? %><%= patient.work %>
-            <%= 'Email:' if patient.email? %><%= patient.email %>
+            <%= 'C: ' if patient.cell? %><%= patient.cell %>
+            <%= 'H: ' if patient.home? %><%= patient.home %>
+            <%= 'W: ' if patient.work? %><%= patient.work %>
+            <%= 'E: ' if patient.email? %><%= patient.email %>
           </td>
           <td>
             <%= patient.weight %>
@@ -70,11 +70,10 @@
             <%= patient.d_onset %><%= '/Pain: ' if patient.pain_scale? %>
             <%= patient.pain_scale %>
           </td>
-          <td><%= patient.pcp_name %></td>
+          <td><%= patient.referred %></td>
           <td>
             <%= (patient.di_list.to_sentence).gsub(/_/, ' ').gsub(/;/, '') %><%= ', ' if patient.o_dis? %>
-            <%= patient.o_dis %><%= ', ' if patient.inj_surg? %>
-            <%= patient.inj_surg %><%= ', Preg' if patient.preg == 'Yes' %>
+            <%= patient.o_dis %><%= ', Preg' if patient.preg == 'Yes' %>
           </td>
         </tr>
       <% end %>
