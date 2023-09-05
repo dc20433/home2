@@ -1,3 +1,4 @@
+<%= render "layouts/navbar" %>
 <div class="text-center">
   <% if (current_user && current_user.Patient?) %>
     <%= link_to "Patient List", regis_path, class:"nav-link text-dark ms-1 mt-1 pt-1 pb-1 fw-bold bg-info rounded-pill border border-dark border-2" %>
@@ -16,6 +17,6 @@
   <br><br><br><br>
   <div class="text-center">
   <br><br><br><br>
-    <%= button_to("Finish", destroy_user_session_path, class:"btn btn-success mt-5 ps-4 pe-4 rounded-pill border border-dark border-2", method: :delete, data: { turbo_method: :delete }) %>
+    <%= button_to("Finish", destroy_user_session_path, style: "font-weight: bold", class:"btn btn-danger mt-5 ps-4 pe-4 rounded-pill border border-dark border-2", method: :delete, data: { turbo_method: :delete }) %>
   </div>
 </div>

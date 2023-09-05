@@ -78,3 +78,4 @@ gem "ransack"
 
 gem "local_time", "~> 2.1"
 gem "image_processing", "~> 1.2"
+gem "dockerfile-rails", ">= 1.5", :group => :development

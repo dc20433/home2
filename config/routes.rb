@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   
-  get 'overviews/patient_list'
   get 'overviews/patient_info'
   get 'overviews/chart_name'
   get 'overviews/chart_date'
   get 'consent' => 'sites#consent'
-  get 'info_edit' => 'sites#info_edit'
+  get 'no_consent' => 'sites#no_consent'
   
   root 'sites#home'
 end

@@ -5,6 +5,6 @@ class SitesController < ApplicationController
   def consent
   end
 
-  def info_edit
+  def no_consent
   end
 end

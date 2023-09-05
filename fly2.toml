@@ -1,17 +1,13 @@
-# fly.toml app configuration file generated for hike1 on 2023-09-04T13:58:38-04:00
+# fly.toml app configuration file generated for hiking on 2023-09-04T13:45:01-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "hike1"
+app = "home2"
 primary_region = "iad"
 console_command = "/rails/bin/rails console"
 
 [build]
-
-[env]
-  PORT = "3000"
-
 
 [http_service]
   internal_port = 3000
