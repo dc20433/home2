@@ -38,7 +38,7 @@
     </thead>
     </tbody>
 
-      <% @regi.patients.order('v_date DESC').each do |patient| %>
+      <% @regi.patients.order("v_date DESC").each do |patient| %>
         <tr>
           <td>
             <% if (current_user && current_user.Patient?)%>

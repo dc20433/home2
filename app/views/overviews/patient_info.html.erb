@@ -24,9 +24,10 @@
         <tr style="height:15px">
         <td>
         <% @prefix = Regi.find(id=patient.regi_id) %>
-        <% @name != patient.regi_id ? show_name = @prefix.last_name + ", " + @prefix.first_name + " " + @prefix.init : show_name = " " %>
+        <% @name != @prefix ? show_name = @prefix.last_name + ", " + @prefix.first_name + " " + @prefix.init : show_name = " " %>
         <%= link_to show_name, regi_patient_path(patient.regi_id, patient) %>
         </td>
+        <% @name = @prefix %>
           <td>
           <%= patient.v_date %>
           </td>
