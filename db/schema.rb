@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_214330) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_27_020606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -82,11 +82,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_01_214330) do
     t.string "com2"
     t.string "com3"
     t.string "pain_scale"
+    t.decimal "d_lost", precision: 4, scale: 1
+    t.decimal "d_restd", precision: 4, scale: 1
+    t.string "c_onset"
+    t.string "better"
+    t.string "worse"
+    t.string "o_drs"
+    t.date "o_drs_when"
+    t.string "pcp_name"
+    t.string "hosp"
+    t.date "h_when"
     t.string "diag_given"
+    t.string "diag_where"
     t.string "aq_b4"
+    t.string "aqrist"
+    t.string "aq_where"
     t.string "di_list", default: [], array: true
     t.string "string", default: [], array: true
     t.string "o_dis"
+    t.string "inj_surg"
+    t.string "med_taken"
+    t.string "alcohol"
+    t.string "tobacco"
     t.date "last_prd"
     t.string "preg"
     t.integer "preg_wks"
