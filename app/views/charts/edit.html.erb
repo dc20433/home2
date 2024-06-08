@@ -1,6 +1,6 @@
 <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
   <h1 class="text-center">Edit Chart</h1>
   <%= render 'layouts/identifier' %>
-  <%= link_to 'Back to Charts', regi_charts_path, class:'btn btn-outline-primary btn-sm rounded-pill' %>
+  <%= link_to 'Back to Charts', regi_charts_path, class:'btn btn-outline-primary btn-sm rounded-pill px-3 m-2 fw-bold' %>
   <%= render 'form' %>
 <% end %>

@@ -12,10 +12,10 @@
             <%= render 'layouts/identifier' %>
           </div>
           <div class="card-body">
-            <%= link_to 'New Filing', new_regi_filing_path(params[:regi_id]), class: "btn btn-sm btn-outline-dark m-1 rounded-pill" %>
-            <%= link_to 'Patient Info', regi_patients_path, class:"btn btn-sm btn-outline-primary m-1 rounded-pill" %>
-            <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-info m-1 rounded-pill" %>
-            <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary m-1 rounded-pill" %>
+            <%= link_to 'New Filing', new_regi_filing_path(params[:regi_id]), class: "btn btn-sm btn-outline-dark outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+            <%= link_to 'Patient Info', regi_patients_path, class:"btn btn-sm btn-outline-primary outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+            <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-info outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+            <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
 
             <table class="table table-sm table-striped table-hover mt-1">
               <thead class="table-info">
@@ -40,9 +40,9 @@
                     <td><%= (filing.created_at - 5*3600).strftime("%Y-%m-%d, %H:%M") %></td>
                     <td>
                       <div class="btn-group" role="group">
-                      <%= link_to 'View', filing.image, class: "btn btn-sm btn-success ms-2 me-2 ps-3 pe-3 rounded-pill" %>
-                      <%= link_to 'Change', edit_regi_filing_path(@regi,filing), class: "btn btn-sm btn-warning ms-2 me-2 rounded-pill" %>
-                      <%= button_to "Delete", [@regi,filing], method: :delete, class:"btn btn-sm btn-danger ms-2 me-2 rounded-pill", form: { data: { turbo_confirm: "Are you sure?" } } %>
+                      <%= link_to 'View', filing.image, class: "btn btn-sm btn-success rounded-pill px-3 m-2 fw-bold" %>
+                      <%= link_to 'Change', edit_regi_filing_path(@regi,filing), class: "btn btn-sm btn-warning rounded-pill px-3 m-2 fw-bold" %>
+                      <%= button_to "Delete", [@regi,filing], method: :delete, class:"btn btn-sm btn-danger rounded-pill px-3 m-2 fw-bold", form: { data: { turbo_confirm: "Are you sure?" } } %>
                       </div>
                     </td>
                   </tr>

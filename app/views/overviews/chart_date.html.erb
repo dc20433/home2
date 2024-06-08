@@ -3,9 +3,9 @@
 
   <h2 class="text-center">Patient Charts by Date as of <%= Time.now.in_time_zone("America/New_York").strftime("%Y-%m-%d %H:%M") %></h2>
   
-  <button onclick="window.print()", class="btn btn-sm btn-outline-success ps-3 pe-3 rounded-pill" >Print This Page</button>
+  <button onclick="window.print()", class="btn btn-sm btn-outline-success outline-double rounded-pill px-3 py-0 fw-bold">Print This Page</button>
 
-  <table class="table table-sm table-striped table-hover mt-1">
+  <table class="table table-sm table-striped table-hover mt-2">
     <thead class="table-info">
       <tr>
         <th style="width:92px">Date</th>

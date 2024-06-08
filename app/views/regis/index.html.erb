@@ -14,8 +14,8 @@
 
 <div 
   class="screen"
-  style="background-image: url(<%= asset_path 'pine_trees.jpg' %> );">
-  <div class="color-overlay d-flex justify-content-center">    
+  style="background-image: url(<%= asset_path 'pine_trees.jpg' %> ) ;">
+  <div class="color-overlay d-flex justify-content-center align-items-center">    
     <div class="card mt-3 mx-auto border-primary" style="width: 48rem;">
         <div class="card shadow border-dark">
           <div class="card-header">
@@ -23,9 +23,9 @@
           </div>
           <div class="card-body">
 
-            <%= link_to "New Patient", new_regi_path, class: "btn btn-sm btn-outline-dark ps-3 pe-3 rounded-pill" %>
+            <%= link_to "New Patient", new_regi_path, class: "btn btn-sm btn-outline-dark outline-double rounded-pill px-3 py-0 fw-bold"  %>
             <%= render 'search' %>
-            <%# link_to "Print", print_path, class: "btn btn-sm btn-outline-success ps-3 pe-3 rounded-pill" %>
+            <%# link_to "Print", print_path, class: "btn btn-sm btn-outline-success outline-double rounded-pill px-3 py-0 fw-bold"  %>
             <table class="table table-sm table-striped table-hover mx-auto mt-1">
               <thead class="table-primary">
                 <tr>
@@ -53,7 +53,7 @@
                 <td><%= regi.first_name %></td>
                 <td><%= regi.init? ? regi.init + "." : "" %></td>
                 <td>
-                <%= link_to 'Info', regi_patients_path(regi.id), :disable_with => "processing", class: "btn btn-outline-primary btn-sm ps-3 pe-3 rounded-pill" %>
+                <%= link_to 'Info', regi_patients_path(regi.id), :disable_with => "processing", class: "btn btn-outline-primary btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
                 </td>
               <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
                 <td><%= link_to regi.last_name, regi_path(regi.id) %></td>
@@ -63,9 +63,9 @@
                 <td><%= regi.dob? ? ((Time.now.in_time_zone("America/New_York") - regi.dob.to_time) / 1.year.seconds).floor : " " %></td>
                 <td><%= regi.dob %></td>                
                 <td>                
-                  <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm ps-3 pe-3 rounded-pill" %>
-                  <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm rounded-pill" %>
-                  <%= link_to 'Files', regi_filings_path(regi.id), class: "btn btn-outline-success btn-sm ps-3 pe-3 rounded-pill" %>
+                  <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
+                  <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
+                  <%= link_to 'Files', regi_filings_path(regi.id), class: "btn btn-outline-success btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
                 </td>
               <% end %>
               </tr>

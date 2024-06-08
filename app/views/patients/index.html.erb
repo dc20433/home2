@@ -19,10 +19,10 @@
   <% end %>
   <% if (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
     <%# link_to 'New Record', new_regi_patient_path, class:'btn btn-sm btn-outline-dark m-1 rounded-pill' %>
-    <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-primary m-1 rounded-pill" %>
-    <%= link_to 'Patient Files', regi_filings_path, class:"btn btn-sm btn-outline-info m-1 rounded-pill" %>
-    <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary m-1 rounded-pill" %>
-    <button onclick="window.print()", class="btn btn-sm btn-outline-success ps-3 pe-3 rounded-pill" >Print This Page</button>
+    <%= link_to 'Patient Charts', regi_charts_path, class:"btn btn-sm btn-outline-primary outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+    <%= link_to 'Patient Files', regi_filings_path, class:"btn btn-sm btn-outline-info outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+    <%= link_to 'Previous Page', :back, class:"btn btn-sm btn-outline-secondary outline-double rounded-pill px-2 py-0 m-1 fw-bold" %>
+    <button onclick="window.print()", class="btn btn-sm btn-outline-success outline-double rounded-pill px-2 py-0 m-1 fw-bold" >Print This Page</button>
   <% end %>
   <table class="table table-sm table-striped table-hover mt-1">
     <thead class="table-success">
