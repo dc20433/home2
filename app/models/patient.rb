@@ -1,5 +1,6 @@
 class Patient < ApplicationRecord
   belongs_to :regi
+  validates :v_date, presence: true
 
   MARITAL_STATUS = 
   [
