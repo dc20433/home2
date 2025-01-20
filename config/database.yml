@@ -19,20 +19,16 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
+  username: <%= ENV["PG_UN"] %>
+  password: <%= ENV["PG_PW"] %>
   
 development:
   <<: *default
   database: db_active
-  host: localhost
-  username: <%= ENV["PG_UN"] %>
-  password: <%= ENV["PG_PW"] %>
 
 test:
   <<: *default
   database: db_active_test
-  host: localhost
-  username: <%= ENV["PG_UN"] %>
-  password: <%= ENV["PG_PW"] %>
 
 staging:
   url: <%= ENV['DATABASE_URL'] %>
