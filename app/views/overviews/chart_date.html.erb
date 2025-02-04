@@ -19,7 +19,7 @@
     </tbody>
         <% @date = 0 %>
         <% @chart_date.each do |chart| %>
-            <tr style="height:15px">
+            <tr style="height:15px" class="fs-4">
             <% @date != chart.t_date ? show_date = chart.t_date : show_date = " " %>
             <td><%= show_date %></td> 
             <% @date = chart.t_date %>
