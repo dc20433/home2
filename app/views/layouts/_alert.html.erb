@@ -1,7 +1,7 @@
 <div id="flash-messages">
   <% flash.each do |name, msg| %>
-    <div class="alert pt-2 pb-0 alert-<%= name == 'notice' ? 'warning' : 'danger'%> alert-dismissible fade show d-flex justify-center-between" role="alert">
-      <p class="pb-0"><strong><%= msg %></strong></p>
+    <div class="alert pt-2 pb-0 fs-6 alert-<%= name == 'notice' ? 'warning' : 'danger'%> alert-dismissible fade show d-flex justify-center-between" role="alert">
+      <p><strong><%= msg %></strong></p>
       <button type="button" class="btn-close pb-1" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>

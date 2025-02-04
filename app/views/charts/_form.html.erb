@@ -14,30 +14,30 @@
   <%= f.text_field :name, value: (@regi.last_name + ", " + @regi.first_name + " " + (@regi.init? ? (@regi.init + ".") : '' )), hidden: true %>
 
   <div class="row">
-    <div class="col col-md-2">
+    <div class="col col-md-3 fs-6">
       <b>Updated on</b>
-      <%= f.date_field :t_date, placeholder: "MM/DD/YYYY", class:"form-control form-control-sm border-primary" %>
+      <%= f.date_field :t_date, placeholder: "MM/DD/YYYY", class:"form-control form-control-sm border-primary fs-4" %>
     </div>
   </div>
   <br>
-  <div class="col">
+  <div class="col row fs-6">
     <b>Subjective</b>
-    <%= f.text_area :subj, class:"form-control form-control-sm border-primary", style:"height: 50px" %>
+    <%= f.text_area :subj, class:"form-control form-control-sm border-primary fs-4", style:"height: 150px" %>
   </div>
   <br>
-  <div class="col">
+  <div class="col fs-6">
     <b>Objective</b>
-    <%= f.text_area :obj, class:"form-control form-control-sm border-primary", style:"height: 50px" %>
+    <%= f.text_area :obj, class:"form-control form-control-sm border-primary fs-4", style:"height: 150px" %>
   </div>
   <br>
-  <div class="col">
+  <div class="col fs-6">
     <b>Assessment</b>
-    <%= f.text_area :assess, class:"form-control form-control-sm border-primary", style:"height: 50px" %>
+    <%= f.text_area :assess, class:"form-control form-control-sm border-primary fs-4", style:"height: 150px" %>
   </div>
   <br>
-  <div class="col">
+  <div class="col fs-6">
     <b>Plan</b>
-    <%= f.text_area :plan, class:"form-control form-control-sm border-primary", style:"height: 50px" %>
+    <%= f.text_area :plan, class:"form-control form-control-sm border-primary fs-4", style:"height: 150px" %>
   </div>
   <br>
   <div class="btn-group" role="group">
