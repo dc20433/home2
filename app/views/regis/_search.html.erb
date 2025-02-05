@@ -7,23 +7,23 @@
     <div class="offcanvas-body">
       <%= search_form_for @q do |f| %>
         <div class="form-group">
-          <b><%= f.label :by_last_name_start, "By first letters of the Last Name", class: "form-label" %></b>
-          <%= f.search_field :last_name_start, class:"form-control form-control-sm border-primary mb-3" %>
+          <b><%= f.label :by_last_name_start, "By first letters of the Last Name", class: "form-label fs-6" %></b>
+          <%= f.search_field :last_name_start, class:"form-control form-control-sm border-primary fs-4 mb-3" %>
         </div>
         <div class="form-group">
-          <b><%= f.label :by_last_name_or_first_name_cont, "By letters in the Last Name or First Name", class: "form-label" %></b>
-          <%= f.search_field :last_name_or_first_name_cont, class:"form-control form-control-sm border-primary mb-3" %>
+          <b><%= f.label :by_last_name_or_first_name_cont, "By letters in the Last Name or First Name", class: "form-label fs-6" %></b>
+          <%= f.search_field :last_name_or_first_name_cont, class:"form-control form-control-sm border-primary fs-4 mb-3" %>
         </div>
         <div class="form-group">
-          <b><%= f.label :by_first_name_cont, "By First Name", class: "form-label" %></b>
-          <%= f.search_field :first_name_cont, class:"form-control form-control-sm border-primary mb-3" %>
+          <b><%= f.label :by_first_name_cont, "By First Name", class: "form-label fs-6" %></b>
+          <%= f.search_field :first_name_cont, class:"form-control form-control-sm border-primary fs-4 mb-3" %>
         </div>
         <div class="form-group">
-          <b><%= f.label :by_gender_start, "By Gender (Male/Female/Other)", class: "form-label" %></b>
-          <%= f.search_field :gender_start, class:"form-control form-control-sm border-primary mb-3" %>
+          <b><%= f.label :by_gender_start, "By Gender (Male/Female/Other)", class: "form-label fs-6" %></b>
+          <%= f.search_field :gender_start, class:"form-control form-control-sm border-primary fs-4 mb-3" %>
         </div>
         <div class="form-group">
-          <%= f.submit "Submit", class: 'btn btn-sm btn-outline-dark rounded-pill' %>
+          <%= f.submit "Submit", class: "btn btn-outline-dark btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
         </div>
       <% end %>
     </div>
