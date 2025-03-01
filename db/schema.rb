@@ -47,7 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_27_020606) do
     t.text "obj"
     t.text "assess"
     t.text "plan"
-    t.string "o_treats"
     t.text "subj"
     t.bigint "regi_id", null: false
     t.datetime "created_at", precision: 0, null: false

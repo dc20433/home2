@@ -2,9 +2,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.1.2
-FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-jemalloc-slim as base
-
-LABEL fly_launch_runtime="rails"
+FROM ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
 WORKDIR /rails
@@ -52,11 +50,9 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-# Adjust binfiles to be executable on Linux and set current working directory
+# Adjust binfiles to be executable on Linux
 RUN chmod +x bin/* && \
-    sed -i "s/\r$//g" bin/* && \
-    sed -i 's/ruby\.exe$/ruby/' bin/* && \
-    grep -l '#!/usr/bin/env ruby' /rails/bin/* | xargs sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)'
+    sed -i 's/ruby\.exe$/ruby/' bin/*
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
@@ -67,7 +63,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl imagemagick iputils-ping libvips net-tools postgresql-client procps traceroute && \
+    apt-get install --no-install-recommends -y curl imagemagick libvips postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Copy built artifacts: gems, application
@@ -81,8 +77,7 @@ USER rails:rails
 
 # Deployment options
 ENV RAILS_LOG_TO_STDOUT="1" \
-    RAILS_SERVE_STATIC_FILES="true" \
-    RUBY_YJIT_ENABLE="1"
+    RAILS_SERVE_STATIC_FILES="true"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
