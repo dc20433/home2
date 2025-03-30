@@ -16,7 +16,7 @@
   class="screen"
   style="background-image: url(<%= asset_path 'pine_trees.jpg' %> ) ;">
   <div class="color-overlay d-flex justify-content-center align-items-center">    
-    <div class="card mt-3 mx-auto border-primary" style="width: 55rem;">
+    <div class="card mt-3 mx-auto border-primary" style="width: 60rem;">
         <div class="card shadow border-dark">
           <div class="card-header">
             <h2 class="card-title text-center">List of Patients</h2>
@@ -41,7 +41,7 @@
                   <th>Gender</th>
                   <th>Age</th>
                   <th style="width:160px">Date of Birth</th>
-                  <th  style="width:250px"></th>
+                  <th  style="width:190px"></th>
                 <% end %>
                 </tr>
               </thead>
@@ -63,7 +63,7 @@
                 <td><%= regi.dob? ? ((Time.now.in_time_zone("America/New_York") - regi.dob.to_time) / 1.year.seconds).floor : " " %></td>
                 <td><%= regi.dob %></td>                
                 <td>                
-                  <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm outline-double rounded-pill px-3 py-0 fw-bold" %>
+                  <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
                   <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
                   <%= link_to 'Files', regi_filings_path(regi.id), class: "btn btn-outline-success btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
                 </td>

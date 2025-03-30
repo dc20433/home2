@@ -38,8 +38,10 @@ production:
     adapter: postgresql
     encoding: unicode
     database: db_active
-    username: "postgres"
-    password: "3331"
+    username: <%= ENV["RDS_USERNAME"] %>
+    password: <%= ENV["RDS_PASSWORD"] %>
+    # username: "postgres"
+    # password: "3331"
     #database: <%= ENV['RDS_DB_NAME'] %>
     #username: <%= ENV['RDS_USERNAME'] %>
     #password: <%= ENV['RDS_PASSWORD'] %>
