@@ -32,16 +32,16 @@
                 <% if (current_user && current_user.Patient?) %>
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>M. Init</th>
+                  <th>M.I.</th>
                   <th></th>
                 <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>M. Init</th>
+                  <th>M.I.</th>
                   <th>Gender</th>
                   <th>Age</th>
                   <th style="width:160px">Date of Birth</th>
-                  <th  style="width:200px"></th>
+                  <th  style="width:250px"></th>
                 <% end %>
                 </tr>
               </thead>
