@@ -25,9 +25,8 @@
 
             <%= link_to "New Patient", new_regi_path, class: "btn btn-sm btn-outline-dark outline-double rounded-pill px-3 py-0 fw-bold"  %>
             <%= render 'search' %>
-            <%# link_to "Print", print_path, class: "btn btn-sm btn-outline-success outline-double rounded-pill px-3 py-0 fw-bold"  %>
             <table class="table table-sm table-striped table-hover mx-auto mt-1">
-              <thead class="table-primary fs-6">
+              <thead class="table-primary fs-6 pt">
                 <tr>
                 <% if (current_user && current_user.Patient?) %>
                   <th>Last Name</th>
@@ -64,7 +63,7 @@
                 <td><%= regi.dob %></td>                
                 <td>                
                   <%= link_to 'Info', regi_patients_path(regi.id), class: "btn btn-outline-primary btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
-                  <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
+                  <%= link_to 'Charts', regi_charts_path(regi.id), class: "btn btn-outline-info btn-sm outline-double rounded-pill px-1 py-0 fw-bold" %>
                   <%= link_to 'Files', regi_filings_path(regi.id), class: "btn btn-outline-success btn-sm outline-double rounded-pill px-2 py-0 fw-bold" %>
                 </td>
               <% end %>

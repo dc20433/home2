@@ -152,6 +152,9 @@ GEM
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    passenger (5.3.7)
+      rack
+      rake (>= 0.8.1)
     pg (1.4.5)
     pg (1.4.5-x64-mingw-ucrt)
     public_suffix (5.0.1)
@@ -269,6 +272,7 @@ DEPENDENCIES
   jbuilder
   local_time (~> 2.1)
   nested_scaffold
+  passenger (~> 5.0, >= 5.0.30)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
