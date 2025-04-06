@@ -16,7 +16,7 @@
   class="screen"
   style="background-image: url(<%= asset_path 'pine_trees.jpg' %> ) ;">
   <div class="color-overlay d-flex justify-content-center align-items-center">    
-    <div class="card mt-3 mx-auto border-primary" style="width: 55rem;">
+    <div class="card mt-3 mx-auto border-primary" style="width: 60rem;">
         <div class="card shadow border-dark">
           <div class="card-header">
             <h2 class="card-title text-center">List of Patients</h2>
@@ -31,7 +31,7 @@
                 <% if (current_user && current_user.Patient?) %>
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>M. Init</th>
+                  <th>M.I.</th>
                   <th></th>
                 <% elsif (current_user && current_user.Manager?) || (current_user && current_user.Admin?) %>
                   <th>Last Name</th>
@@ -40,7 +40,7 @@
                   <th>Gender</th>
                   <th>Age</th>
                   <th style="width:160px">Date of Birth</th>
-                  <th  style="width:200px"></th>
+                  <th  style="width:190px"></th>
                 <% end %>
                 </tr>
               </thead>
